@@ -15,6 +15,8 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
+        // Implementasi logic untuk seed database.
+
         $permissions = [
             'manage statistics',
             'manage product',
