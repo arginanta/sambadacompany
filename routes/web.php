@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CompanyAboutController;
 use App\Http\Controllers\CompanyStatisticController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HeroSectionController;
 use App\Http\Controllers\OurPrincipleController;
 use App\Http\Controllers\OurTeamController;
@@ -12,9 +13,7 @@ use App\Http\Controllers\ProjectClientController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
 // Route untuk halaman dashboard. 
 // Memerlukan middleware 'auth' (autentikasi) dan 'verified' (email diverifikasi). 
@@ -35,7 +34,7 @@ Route::middleware('auth')->group(function () {
     // - Mengatur fitur CRUD untuk berbagai entitas (statistik, produk, prinsip, testimoni, dll.) melalui controller terkait menggunakan Route::resource().
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::middleware('can:manage statistics')->group(function () {
-            Route::resource('statistic', CompanyStatisticController::class);
+            Route::resource('statistics', CompanyStatisticController::class);
         });
 
         Route::middleware('can:manage products')->group(function () {
