@@ -1,17 +1,17 @@
 <?php
 
-use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\CompanyAboutController;
-use App\Http\Controllers\CompanyStatisticController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
-use App\Http\Controllers\HeroSectionController;
-use App\Http\Controllers\OurPrincipleController;
 use App\Http\Controllers\OurTeamController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectClientController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\HeroSectionController;
 use App\Http\Controllers\TestimonialController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyAboutController;
+use App\Http\Controllers\OurPrincipleController;
+use App\Http\Controllers\ProjectClientController;
+use App\Http\Controllers\CompanyStatisticController;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
