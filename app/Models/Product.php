@@ -15,7 +15,7 @@ class Product extends Model
         'name',
         'tagline',
         'thumbnail',
-        'abaout'
+        'about'
     ];
 
     public function appointments(): HasMany
