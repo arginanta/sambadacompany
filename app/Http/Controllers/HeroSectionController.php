@@ -12,7 +12,8 @@ class HeroSectionController extends Controller
      */
     public function index()
     {
-        //
+        $hero_sections = HeroSection::oderByDesc('id')->pagination(10);
+        return view('admin.hero_sections.index', compact('hero_sections'));
     }
 
     /**

@@ -12,7 +12,8 @@ class OurPrincipleController extends Controller
      */
     public function index()
     {
-        //
+        $principles = OurPrinciple::oderByDesc('id')->pagination(10);
+        return view('admin.principles.index', compact('principles'));
     }
 
     /**

@@ -12,8 +12,13 @@ class CompanyStatisticController extends Controller
      */
     public function index()
     {
-        //
-        return ("Halo");
+        // Ambil data statistik perusahaan dari database, diurutkan dari ID terbesar ke terkecil (data terbaru).
+        // Data ini akan dipaginasi, dengan jumlah 10 item per halaman.
+        $statistics = CompanyStatistic::orderByDesc('id')->pagination(10);
+
+        // Tampilkan view 'admin.statistics.index' dengan mengirimkan data statistik.
+        // Data ini dapat digunakan untuk ditampilkan dalam bentuk tabel atau daftar pada halaman CMS.
+        return view('admin.statistics.index', compact('statistics'));
     }
 
     /**
