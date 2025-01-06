@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProjectClient;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,14 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        // Mengambil data klien dari tabel project_clients
+        // Data diurutkan berdasarkan kolom 'id' secara menurun (data terbaru terlebih dahulu)
+        // Hanya 10 data per halaman dengan mekanisme pagination
+        $clients = ProjectClient::orderByDesc('id')->paginate(10);
+
+        // Mengirimkan data klien ke view 'admin.testimonials.create'
+        // Variabel $clients akan tersedia di view dengan nama yang sama
+        return view('admin.testimonials.create', compact('clients'));
     }
 
     /**
