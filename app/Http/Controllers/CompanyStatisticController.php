@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStatisticRequest;
 use App\Models\CompanyStatistic;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,7 @@ class CompanyStatisticController extends Controller
      */
     public function create()
     {
+        // Tampilkan view
         return view('admin.statistics.create');
         
     }
@@ -33,7 +35,7 @@ class CompanyStatisticController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStatisticRequest $request)
     {
         //
     }
