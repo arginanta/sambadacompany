@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAboutRequest;
 use App\Models\CompanyAbout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreAboutRequest;
 
 class CompanyAboutController extends Controller
 {
@@ -23,7 +24,6 @@ class CompanyAboutController extends Controller
     public function create()
     {
         return view('admin.abouts.create');
-        
     }
 
     /**
@@ -31,7 +31,27 @@ class CompanyAboutController extends Controller
      */
     public function store(StoreAboutRequest $request)
     {
-        //
+        // Closure-based transaction
+        DB::transaction(function () use ($request) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('thumbnail')) {
+                $thumnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+                $validated['thumbnail'] = $thumnailPath;
+            }
+
+            $newAbout = CompanyAbout::create($validated);
+
+            if (!empty($validated['keypoints'])) {
+                foreach ($validated['keypoints'] as $keypoint) {
+                    $newAbout->keypoints()->create([
+                        'keypoint' => $keypoint
+                    ]);
+                }
+            }
+        });
+
+        return redirect()->route('admin.abouts.index');
     }
 
     /**
