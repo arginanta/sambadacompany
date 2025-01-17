@@ -44,7 +44,7 @@ class RolePermissionSeeder extends Seeder
         );
 
         $designManagerPermission = [
-            'manage product',
+            'manage products',
             'manage principles',
             'manage testimonials',
         ];
