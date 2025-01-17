@@ -14,7 +14,7 @@ class ProjectClientController extends Controller
      */
     public function index()
     {
-        $clients = ProjectClient::oderByDesc('id')->pagination(10);
+        $clients = ProjectClient::orderByDesc('id')->paginate(10);
         return view('admin.clients.index', compact('clients'));
     }
 

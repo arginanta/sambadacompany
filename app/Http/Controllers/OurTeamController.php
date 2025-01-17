@@ -14,7 +14,7 @@ class OurTeamController extends Controller
      */
     public function index()
     {
-        $teams = OurTeam::oderByDesc('id')->pagination(10);
+        $teams = OurTeam::orderByDesc('id')->paginate(10);
         return view('admin.teams.index', compact('teams'));
     }
 
