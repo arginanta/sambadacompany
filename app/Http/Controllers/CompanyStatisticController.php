@@ -81,7 +81,7 @@ class CompanyStatisticController extends Controller
                 $validated['icon'] = $iconPath;
             }
 
-            $$statistic->update($validated);
+            $statistic->update($validated);
         });
 
         return redirect()->route('admin.statistics.index');
