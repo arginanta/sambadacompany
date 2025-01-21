@@ -70,7 +70,7 @@ class TestimonialController extends Controller
     {
         $clients = ProjectClient::orderByDesc('id')->get();
 
-        return view('admin.testimonials.edit', compact('testimonial'));
+        return view('admin.testimonials.edit', compact('testimonial', 'clients'));
     }
 
     /**

@@ -29,7 +29,7 @@
                             <option value="{{ $testimonial->client->id }}">{{ $testimonial->client->name }}</option>
                         </select>
                         @foreach ($clients as $client)
-                            <option value="{{ $cleint->id }}">{{ $client->name }}</option>
+                            <option value="{{ $client->id }}">{{ $client->name }}</option>
                         @endforeach
 
                         <x-input-error :messages="$errors->get('project_client')" class="mt-2" />
@@ -37,8 +37,8 @@
 
                     <div class="mt-4">
                         <x-input-label for="message" :value="__('message')" />
-                        <textarea name="message" id="message" cols="30" rows="5" value="{{ $testimonial->message }}"
-                            class="border border-slate-300 rounded-xl w-full"> </textarea>
+                        <textarea name="message" id="message" cols="30" rows="5"
+                            class="border border-slate-300 rounded-xl w-full">{{ $testimonial->message }}</textarea>
                         <x-input-error :messages="$errors->get('message')" class="mt-2" />
                     </div>
 

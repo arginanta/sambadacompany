@@ -21,19 +21,19 @@
                             <img src="{{ Storage::url($client->avatar) }} " alt=""
                                 class="rounded-2xl object-cover w-[90px] h-[90px]">
                             <div class="flex flex-col">
-                                <h3 class="text-indigo-950 text-xl font-bold">{{ $about->name }}</h3>
+                                <h3 class="text-indigo-950 text-xl font-bold">{{ $client->name }}</h3>
                             </div>
                         </div>
                         <div class="hidden md:flex flex-col">
                             <p class="text-slate-500 text-sm">Occupation</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">{{ $about->occupation }}</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">{{ $client->occupation }}</h3>
                         </div>
                         <div class="hidden md:flex flex-row items-center gap-x-3">
-                            <a href="{{ route('admin.abouts.edit'), $client }}"
+                            <a href="{{ route('admin.clients.edit', $client) }}"
                                 class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                                 Edit
                             </a>
-                            <form action="{{ route('admin.clients.destroy'), $client }}" method="POST">
+                            <form action="{{ route('admin.clients.destroy', $client) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="font-bold py-4 px-6 bg-red-700 text-white rounded-full">
