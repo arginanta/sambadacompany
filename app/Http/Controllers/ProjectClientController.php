@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProjectClient;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 
 class ProjectClientController extends Controller
 {
@@ -31,8 +32,8 @@ class ProjectClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-         // Closure-based transaction
-         DB::transaction(function () use ($request) {
+        // Closure-based transaction
+        DB::transaction(function () use ($request) {
             $validated = $request->validated();
 
             if ($request->hasFile('avatar')) {
@@ -70,9 +71,25 @@ class ProjectClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProjectClient $projectClient)
+    public function update(UpdateClientRequest $request, ProjectClient $client)
     {
-        //
+        DB::transaction(function () use ($request, $client) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('avatar')) {
+                $avatarPath = $request->file('avatar')->store('avatars', 'public');
+                $validated['avatar'] = $avatarPath;
+            }
+
+            if ($request->hasFile('logo')) {
+                $logoPath = $request->file('logo')->store('logos', 'public');
+                $validated['logo'] = $logoPath;
+            }
+
+            $client->update($validated);
+        });
+
+        return redirect()->route('admin.clients.index');
     }
 
     /**
@@ -80,7 +97,7 @@ class ProjectClientController extends Controller
      */
     public function destroy(ProjectClient $client)
     {
-        DB::transaction(function() use ($client) {
+        DB::transaction(function () use ($client) {
             $client->delete();
         });
 

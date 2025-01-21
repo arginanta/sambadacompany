@@ -6,6 +6,7 @@ use App\Models\CompanyAbout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreAboutRequest;
+use App\Http\Requests\UpdateAboutRequest;
 
 class CompanyAboutController extends Controller
 {
@@ -73,9 +74,29 @@ class CompanyAboutController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CompanyAbout $companyAbout)
+    public function update(UpdateAboutRequest $request, CompanyAbout $about)
     {
-        //
+        DB::transaction(function () use ($request, $about) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('thumbnail')) {
+                $thumnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+                $validated['thumbnail'] = $thumnailPath;
+            }
+
+            $about->update($validated);
+
+            if (!empty($validated['keypoints'])) {
+                $about->keypoints()->delete();
+                foreach ($validated['keypoints'] as $keypoint) {
+                    $about->keypoints()->create([
+                        'keypoint' => $keypoint
+                    ]);
+                }
+            }
+        });
+
+        return redirect()->route('admin.abouts.index');
     }
 
     /**
@@ -83,7 +104,7 @@ class CompanyAboutController extends Controller
      */
     public function destroy(CompanyAbout $about)
     {
-        DB::transaction(function() use ($about) {
+        DB::transaction(function () use ($about) {
             $about->delete();
         });
 

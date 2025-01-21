@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ProjectClient;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreTestimonialRequest;
+use App\Http\Requests\UpdateTestimonialRequest;
 
 class TestimonialController extends Controller
 {
@@ -75,9 +76,20 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
     {
-        //
+        DB::transaction(function () use ($request, $testimonial) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('thumbnail')) {
+                $thumnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+                $validated['thumbnail'] = $thumnailPath;
+            }
+
+            $testimonial->update($validated);
+        });
+
+        return redirect()->route('admin.testimonials.index');
     }
 
     /**
@@ -85,7 +97,7 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        DB::transaction(function() use ($testimonial) {
+        DB::transaction(function () use ($testimonial) {
             $testimonial->delete();
         });
 
