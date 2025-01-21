@@ -27,21 +27,21 @@
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="occupation" :value="__('occupation')" />
+                        <x-input-label for="occupation" :value="__('Occupation')" />
                         <x-text-input id="occupation" class="block mt-1 w-full" type="text" name="occupation"
                             :value="old('occupation')" required autofocus autocomplete="occupation" />
                         <x-input-error :messages="$errors->get('occupation')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="location" :value="__('location')" />
+                        <x-input-label for="location" :value="__('Location')" />
                         <x-text-input id="location" class="block mt-1 w-full" type="text" name="location"
                             :value="old('location')" required autofocus autocomplete="location" />
                         <x-input-error :messages="$errors->get('location')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="avatar" :value="__('avatar')" />
+                        <x-input-label for="avatar" :value="__('Avatar')" />
                         <x-text-input id="avatar" class="block mt-1 w-full" type="file" name="avatar" required
                             autofocus autocomplete="avatar" />
                         <x-input-error :messages="$errors->get('avatar')" class="mt-2" />

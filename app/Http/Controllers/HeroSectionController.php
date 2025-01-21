@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\HeroSection;
-use Illuminate\Http\Request;
-use App\Models\CompanyStatistic;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHeroSectionRequest;

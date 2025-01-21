@@ -31,7 +31,7 @@
                             </h3>
                         </div>
                         <div class="hidden md:flex flex-row items-center gap-x-3">
-                            <a href="{{ route('admin.hero_sections.edit'), $hero_section }}"
+                            <a href="{{ route('admin.hero_sections.edit', $hero_section) }}"
                                 class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                                 Edit
                             </a>

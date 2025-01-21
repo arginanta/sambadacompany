@@ -20,35 +20,35 @@
                 <form method="POST" action="{{ route('admin.hero_sections.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div>
-                        <x-input-label for="heading" :value="__('heading')" />
+                        <x-input-label for="heading" :value="__('Heading')" />
                         <x-text-input id="heading" class="block mt-1 w-full" type="text" name="heading"
                             :value="old('heading')" required autofocus autocomplete="heading" />
                         <x-input-error :messages="$errors->get('heading')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="banner" :value="__('banner')" />
+                        <x-input-label for="banner" :value="__('Banner')" />
                         <x-text-input id="banner" class="block mt-1 w-full" type="file" name="banner" required
                             autofocus autocomplete="banner" />
                         <x-input-error :messages="$errors->get('banner')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="subheading" :value="__('subheading')" />
+                        <x-input-label for="subheading" :value="__('Subheading')" />
                         <x-text-input id="subheading" class="block mt-1 w-full" type="text" name="subheading"
                             :value="old('subheading')" required autofocus autocomplete="subheading" />
                         <x-input-error :messages="$errors->get('subheading')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="achievement" :value="__('achievement')" />
+                        <x-input-label for="achievement" :value="__('Achievement')" />
                         <x-text-input id="achievement" class="block mt-1 w-full" type="text" name="achievement"
                             :value="old('achievement')" required autofocus autocomplete="achievement" />
                         <x-input-error :messages="$errors->get('achievement')" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="path_video" :value="__('path_video')" />
+                        <x-input-label for="path_video" :value="__('Path_video')" />
                         <x-text-input id="path_video" class="block mt-1 w-full" type="text" name="path_video"
                             :value="old('path_video')" required autofocus autocomplete="path_video" />
                         <x-input-error :messages="$errors->get('path_video')" class="mt-2" />
