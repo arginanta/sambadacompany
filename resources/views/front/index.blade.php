@@ -13,7 +13,7 @@
                             <img src="{{ asset('assets/logo/logo.svg') }}" class="object-contain w-full h-full" alt="logo">
                         </div>
                         <div class="flex flex-col">
-                            <p id="CompanyName" class="font-extrabold text-xl leading-[30px]">ShaynaComp</p>
+                            <p id="CompanyName" class="font-extrabold text-xl leading-[30px]">SambadaCamp</p>
                             <p id="CompanyTagline" class="text-sm text-cp-light-grey">Build Futuristic Dreams</p>
                         </div>
                     </div>
@@ -263,7 +263,7 @@
                 @endforelse
 
 
-                <a href="team.html" class="view-all-card">
+                <a href="{{ route('front.team') }}" class="view-all-card">
                     <div
                         class="card bg-white flex flex-col h-full justify-center items-center p-[30px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
                         <div class="w-[60px] h-[60px] flex shrink-0">

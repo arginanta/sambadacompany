@@ -11,7 +11,6 @@ use App\Models\Testimonial;
 
 class FrontController extends Controller
 {
-    //
     public function index()
     {
         $hero_sections = HeroSection::orderByDesc('id')->take(1)->get();
@@ -21,5 +20,12 @@ class FrontController extends Controller
         $teams = OurTeam::take(7)->get();
         $testimonials = Testimonial::take(5)->get();
         return view('front.index', compact('hero_sections', 'principles', 'statistics', 'products', 'teams', 'testimonials'));
+    }
+
+    public function team()
+    {
+        $teams = OurTeam::take(12)->get();
+        $statistics = CompanyStatistic::take(4)->get();
+        return view('front.team', compact('teams', 'statistics'));
     }
 }

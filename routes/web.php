@@ -14,6 +14,7 @@ use App\Http\Controllers\ProjectClientController;
 use App\Http\Controllers\CompanyStatisticController;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/team', [FrontController::class, 'team'])->name('front.team');
 
 // Route untuk halaman dashboard. 
 // Memerlukan middleware 'auth' (autentikasi) dan 'verified' (email diverifikasi). 
