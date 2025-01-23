@@ -31,4 +31,5 @@ class StoreAppointmentRequest extends FormRequest
             'brief' => 'required|string|max:65595'
         ];
     }
+    
 }

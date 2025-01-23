@@ -171,7 +171,6 @@
     </div>
     {{-- Products Section --}}
     <div id="Products" class="container max-w-[1130px] mx-auto flex flex-col gap-20 mt-20">
-
         @forelse ($products as $product)
             <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
                 <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
@@ -186,7 +185,7 @@
                         <h2 class="font-bold text-4xl leading-[45px]">{{ $product->name }}</h2>
                         <p class="leading-[30px] text-cp-light-grey">{{ $product->about }}</p>
                     </div>
-                    <a href=""
+                    <a href="{{ route('front.appointment') }}"
                         class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book
                         Appointment</a>
                 </div>
@@ -381,7 +380,7 @@
                     <div class="flex flex-col gap-[10px]">
                         <h2 class="font-bold text-4xl leading-[45px]">Frequently Asked Questions</h2>
                     </div>
-                    <a href="contact.html" class="p-5 bg-cp-black rounded-xl text-white w-fit font-bold">Contact Us</a>
+                    <a href="{{ route('front.appointment') }}" class="p-5 bg-cp-black rounded-xl text-white w-fit font-bold">Contact Us</a>
                 </div>
                 <div class="flex flex-col gap-[30px] sm:w-[603px] shrink-0">
                     <div class="flex flex-col p-5 rounded-2xl bg-white w-full">

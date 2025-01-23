@@ -16,6 +16,8 @@ use App\Http\Controllers\CompanyStatisticController;
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/team', [FrontController::class, 'team'])->name('front.team');
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
+Route::get('/appointment', [FrontController::class, 'appointment'])->name('front.appointment');
+Route::post('/appointment/store', [FrontController::class, 'appointment_store'])->name('front.appointment_store'); // menambahkan data use post
 
 // Route untuk halaman dashboard. 
 // Memerlukan middleware 'auth' (autentikasi) dan 'verified' (email diverifikasi). 

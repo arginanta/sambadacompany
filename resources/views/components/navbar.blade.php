@@ -4,7 +4,7 @@
             <img src="assets/logo/logo.svg" class="object-contain w-full h-full" alt="logo">
         </div>
         <div class="flex flex-col">
-            <p id="CompanyName" class="font-extrabold text-xl leading-[30px]">SambadaCamp</p>
+            <p id="CompanyName" class="font-extrabold text-xl leading-[30px]">ShaynaComp</p>
             <p id="CompanyTagline" class="text-sm text-cp-light-grey">Build Futuristic Dreams</p>
         </div>
     </div>
@@ -25,7 +25,7 @@
             <a href="{{ route('front.about') }}">About</a>
         </li>
     </ul>
-    <a href=""
+    <a href="{{ route('front.appointment') }}"
         class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Get
         a Quote</a>
 </nav>

@@ -40,7 +40,8 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        return view('admin.appointments.details', $appointment);
+        $appointments = Appointment::take(1)->get();
+        return view('admin.appointments.details', compact('appointments'));
     }
 
     /**

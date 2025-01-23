@@ -14,14 +14,15 @@
                 @forelse ($appointments as $appointment)
                     <div class="item-card flex flex-row justify-between items-center">
                         <div class="flex flex-row items-center gap-x-3">
-                            <img src="" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
+                            <img src="{{ Storage::url($appointment->product->thumbnail) }}" alt=""
+                                class="rounded-2xl object-cover w-[90px] h-[90px]">
                             <div class="flex flex-col">
-                                <h3 class="text-indigo-950 text-xl font-bold">{{ $appointment->$name }}</h3>
+                                <h3 class="text-indigo-950 text-xl font-bold">{{ $appointment->name }}</h3>
                             </div>
                         </div>
                         <div class="hidden md:flex flex-col">
                             <p class="text-slate-500 text-sm">Budget</p>
-                            <h3 class="text-indigo-950 text-xl font-bold">Rp {{ $appointment->budget }}</h3>
+                            <h3 class="text-indigo-950 text-xl font-bold">$ {{ number_format($appointment->budget, 0, ',', '.') }}</h3>
                         </div>
                         <div class="hidden md:flex flex-col">
                             <p class="text-slate-500 text-sm">Date</p>
@@ -30,8 +31,7 @@
                             </h3>
                         </div>
                         <div class="hidden md:flex flex-row items-center gap-x-3">
-                            <a href="{{ route('admin.appointments.details', $appointment) }}"
-                                class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                            <a href="{{ route('admin.appointments.show', $appointment) }}" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                                 Details
                             </a>
                         </div>
@@ -39,7 +39,8 @@
                 @empty
                     <p>Belum ada data terbaru</p>
                 @endforelse
-
+                {{-- pagination --}}
+                {{ $appointments->links() }}
             </div>
         </div>
     </div>
